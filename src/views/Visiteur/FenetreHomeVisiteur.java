@@ -8,6 +8,7 @@ public class FenetreHomeVisiteur extends JFrame{
     private JButton ReserverButton;
     private JButton AllReservationButton;
     private JLabel TexteHome;
+    private JButton QuitterBtn;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -66,5 +67,13 @@ public class FenetreHomeVisiteur extends JFrame{
 
     public void setTexteHome(JLabel texteHome) {
         TexteHome = texteHome;
+    }
+
+    public JButton getQuitterBtn() {
+        return QuitterBtn;
+    }
+
+    public void setQuitterBtn(JButton quitterBtn) {
+        QuitterBtn = quitterBtn;
     }
 }

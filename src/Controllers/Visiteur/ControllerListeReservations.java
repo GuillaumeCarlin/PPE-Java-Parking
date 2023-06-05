@@ -1,11 +1,14 @@
 package Controllers.Visiteur;
+import Controllers.Admin.ControllerHomeAdmin;
 import Controllers.Gestionnaire.ControllerHomeGestionnaire;
 import DAO.DAOPersonne;
 import DAO.DAOReservation;
 import Entity.Personne;
 import Entity.Reservation;
 import Entity.Role;
+import Utils.Outils;
 import Utils.Singleton;
+import views.Admin.FenetreHomeAdmin;
 import views.Gestionnaire.FenetreHomeGestionnaire;
 import views.Visiteur.FenetreHomeVisiteur;
 import views.Visiteur.FenetreReservations;
@@ -51,7 +54,6 @@ public class ControllerListeReservations extends DefaultTableModel {
                 public void actionPerformed(ActionEvent e) {
                     switch (role.getLibelle()){
                         case "Gestionnaire":
-                            System.out.println("Gestionnaire");
                             try {
                                 new ControllerHomeGestionnaire(new FenetreHomeGestionnaire(), new DAOPersonne(Singleton.getInstance().cnx), personne, role).init();
                             } catch (SQLException ex) {
@@ -59,7 +61,6 @@ public class ControllerListeReservations extends DefaultTableModel {
                             }
                             break;
                         case "Visiteur":
-                            System.out.println("Visiteur");
                             try {
                                 new ControllerHomeVisiteur(new FenetreHomeVisiteur(), new DAOPersonne(Singleton.getInstance().cnx), personne, role).init();
                             } catch (SQLException ex) {
@@ -67,7 +68,7 @@ public class ControllerListeReservations extends DefaultTableModel {
                             }
                             break;
                         case "Admin":
-                            System.out.println("Admin");
+                            new ControllerHomeAdmin(new FenetreHomeAdmin(), personne, role).init();
                             break;
                     }
                     fenetre.setVisible(false);
@@ -78,11 +79,11 @@ public class ControllerListeReservations extends DefaultTableModel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Integer Bool = JOptionPane.showConfirmDialog(null, "Êtes-vous sur de vouloir annuler le reservation de la place : " + fenetre.getTableReservation().getModel().getValueAt(fenetre.getTableReservation().getSelectedRow(), 0));
-                    System.out.println(Bool);
                     JTable table = fenetre.getTableReservation();
                     int ligne = table.getSelectedRow();
                     if(Bool.equals(0)){
                         try {
+                            new Outils().New_Log_Supp_Personnel(personne, daor.FindbyDatePlaceHeure((String) table.getModel().getValueAt(ligne, 0) ,(String) table.getModel().getValueAt(ligne, 3), (Time) table.getModel().getValueAt(ligne, 1)));
                             String Message = daor.DeleteReservation((String) table.getModel().getValueAt(ligne, 0),(String) table.getModel().getValueAt(ligne, 3),  (Time) table.getModel().getValueAt(ligne, 1));
                             JOptionPane.showMessageDialog(null, Message);
                             refreshTable();
@@ -104,10 +105,11 @@ public class ControllerListeReservations extends DefaultTableModel {
                         String Place = (String) table.getModel().getValueAt(ligne, 0);
                         String Date = (String) table.getModel().getValueAt(ligne, 3);
                         Time HeureDebut = (Time) table.getModel().getValueAt(ligne, 1);
+                        Time HeureFin = (Time) table.getModel().getValueAt(ligne, 2);
 
                         try {
                             Reservation reservation = daor.FindbyDatePlaceHeure(Place, Date, HeureDebut);
-                            System.out.println(reservation);
+                            //daor.VerifHeures(HeureDebut,HeureFin, Date, Place);
                             fenetre.getLabelDate().setText("Date : " + reservation.getDate());
                             fenetre.getLabelPlace().setText("Place : " + reservation.getIdPlace());
                             fenetre.getLabelDebut().setText("Heure début : " + reservation.getHeureDebut().toString());

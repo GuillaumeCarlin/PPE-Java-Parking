@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Parking:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/Parking_jar2</output-path>
+    <root id="archive" name="Parking.jar">
+      <element id="module-output" name="Parking" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/mariadb-java-client-3.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jcalendar-1.4/lib/jcalendar-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jcalendar-1.4/lib/jgoodies-common-1.2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jcalendar-1.4/lib/jgoodies-looks-2.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jcalendar-1.4/lib/junit-4.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files/jgoodies-forms-1.8.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files/jgoodies-common-1.8.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/java-swing-timepicker-main/java-swing-timepicker-main/lib/TimingFramework-0.55.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/java-swing-timepicker-main/java-swing-timepicker-main/lib/swing-time-picker.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

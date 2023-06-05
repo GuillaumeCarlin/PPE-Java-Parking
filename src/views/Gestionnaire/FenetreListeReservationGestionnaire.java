@@ -18,6 +18,7 @@ public class FenetreListeReservationGestionnaire extends JFrame{
     private JLabel HeureFinText;
     private JLabel ElectriqueText;
     private JButton refreshButton;
+    private JButton annulerButton;
 
 
     public FenetreListeReservationGestionnaire() {
@@ -146,5 +147,13 @@ public class FenetreListeReservationGestionnaire extends JFrame{
 
     public void setElectriqueText(JLabel electriqueText) {
         ElectriqueText = electriqueText;
+    }
+
+    public JButton getAnnulerButton() {
+        return annulerButton;
+    }
+
+    public void setAnnulerButton(JButton annulerButton) {
+        this.annulerButton = annulerButton;
     }
 }

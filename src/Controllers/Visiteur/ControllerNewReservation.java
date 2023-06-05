@@ -7,6 +7,7 @@ import DAO.DAOParking;
 import DAO.DAOPersonne;
 import Entity.Personne;
 import Entity.Role;
+import Utils.Outils;
 import Utils.Singleton;
 import views.Gestionnaire.FenetreHomeGestionnaire;
 import views.Visiteur.FenetreHomeVisiteur;
@@ -113,8 +114,15 @@ public class ControllerNewReservation extends TableModelListeReservations {
                 String Date = form.format(date);
 
                 try {
-                    String Message = daoReservation.AjoutReservation(place, personne.getIdPersonne(), Debut, Fin, Date);
-                    JOptionPane.showMessageDialog(null, Message);
+                    if(daoReservation.VerifHeures(Debut, Fin, Date, place) == true) {
+                        String Message = daoReservation.AjoutReservation(place, personne.getIdPersonne(), Debut, Fin, Date);
+                        new Outils().New_Log_Ajout_Personnel(personne, daoReservation.FindbyDatePlaceHeure(place ,Date, Debut));
+                        JOptionPane.showMessageDialog(null, Message);
+                    }
+                    else{
+                        String Message = "Réservation impossible: une autre réservation existe déjà à cette heure.";
+                        JOptionPane.showMessageDialog(null, Message);
+                    }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -128,7 +136,6 @@ public class ControllerNewReservation extends TableModelListeReservations {
 
                 switch (Role.getLibelle()){
                     case "Gestionnaire":
-                        System.out.println("Gestionnaire");
                         try {
                             new ControllerHomeGestionnaire(new FenetreHomeGestionnaire(), new DAOPersonne(Singleton.getInstance().cnx), personne, Role).init();
                         } catch (SQLException ex) {
@@ -136,7 +143,6 @@ public class ControllerNewReservation extends TableModelListeReservations {
                         }
                         break;
                     case "Visiteur":
-                        System.out.println("Visiteur");
                         try {
                             new ControllerHomeVisiteur(new FenetreHomeVisiteur(), new DAOPersonne(Singleton.getInstance().cnx), personne, Role).init();
                         } catch (SQLException ex) {
@@ -144,7 +150,6 @@ public class ControllerNewReservation extends TableModelListeReservations {
                         }
                         break;
                     case "Admin":
-                        System.out.println("Admin");
                         break;
                 }
                 fenetre.setVisible(false);
@@ -160,11 +165,9 @@ public class ControllerNewReservation extends TableModelListeReservations {
 
     public Boolean ValidationAjout(Date date, String place , Date heureDebut, Date heureFin){
         if(!(date == null) && heureDebut.before(heureFin)){
-            System.out.println("OK :)");
             return true;
         }
         else{
-            System.out.println("Pas Bon :(");
             return false;
         }
     }

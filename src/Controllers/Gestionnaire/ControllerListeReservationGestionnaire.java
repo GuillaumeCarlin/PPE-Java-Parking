@@ -1,5 +1,7 @@
 package Controllers.Gestionnaire;
 
+import Controllers.Admin.ControllerHomeAdmin;
+import Controllers.Admin.TableModelListeLog;
 import Controllers.Visiteur.ControllerHomeVisiteur;
 import Controllers.Visiteur.TableModelListeReservations;
 import Controllers.Visiteur.TableModelNewReservation;
@@ -8,7 +10,9 @@ import DAO.DAOReservation;
 import Entity.Personne;
 import Entity.Reservation;
 import Entity.Role;
+import Utils.Outils;
 import Utils.Singleton;
+import views.Admin.FenetreHomeAdmin;
 import views.Gestionnaire.FenetreHomeGestionnaire;
 import views.Gestionnaire.FenetreListeReservationGestionnaire;
 import views.Visiteur.FenetreHomeVisiteur;
@@ -55,28 +59,33 @@ public class ControllerListeReservationGestionnaire {
         fenetre.getRechercherButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String Value = fenetre.getRechercheField().getText();
-                System.out.println(Value);
-                switch (fenetre.getComboBoxRecherche().getSelectedItem().toString()){
-                    case "Place":
-                        try {
-                            reservations = daor.FindByPlace(Value);
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        break;
-                    case "Date" :
-                        break;
-                    case "Nom" :
-                        try {
-                            reservations = daor.FindByNom(Value);
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        break;
+                Reset_Label();
+                try {
+                    reservations = daor.Recherche(fenetre.getComboBoxRecherche().getSelectedItem().toString(), fenetre.getRechercheField().getText());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
                 }
                 mDTM = new TableModelListeReservationsAll(reservations);
                 fenetre.getTable1().setModel(mDTM);
+            }
+        });
+
+        fenetre.getAnnulerButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Integer Bool = JOptionPane.showConfirmDialog(null, "Êtes-vous sur de vouloir annuler le reservation de la place : " + fenetre.getTable1().getModel().getValueAt(fenetre.getTable1().getSelectedRow(), 0));
+                JTable table = fenetre.getTable1();
+                int ligne = table.getSelectedRow();
+                if(Bool.equals(0)){
+                    try {
+                        new Outils().New_Log_Supp(personne, daor.FindbyDatePlaceHeure((String) table.getModel().getValueAt(ligne, 1), (String) table.getModel().getValueAt(ligne, 0),(Time) table.getModel().getValueAt(ligne, 3)));
+                        String Message = daor.DeleteReservation((String) table.getModel().getValueAt(ligne, 1),(String) table.getModel().getValueAt(ligne, 0),  (Time) table.getModel().getValueAt(ligne, 3));
+                        JOptionPane.showMessageDialog(null, Message);
+                        refreshTable();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
             }
         });
 
@@ -137,6 +146,8 @@ public class ControllerListeReservationGestionnaire {
                         }
                         break;
                     case "Admin":
+
+                        new ControllerHomeAdmin(new FenetreHomeAdmin(), personne, Role).init();
                         break;
                 }
                 fenetre.setVisible(false);
@@ -148,13 +159,16 @@ public class ControllerListeReservationGestionnaire {
         reservations = daor.FindAll();
         mDTM = new TableModelListeReservationsAll(reservations);
         fenetre.getTable1().setModel(mDTM);
+        Reset_Label();
+    }
 
-        fenetre.getNomText().setText("Nom : ");
-        fenetre.getDateText().setText("Date : ");
-        fenetre.getElectriqueText().setText("Électrique : ");
-        fenetre.getPlaceText().setText("Place : ");
-        fenetre.getHeureFinText().setText("Heure de Fin : ");
-        fenetre.getHeureDebutText().setText("Heure de début : ");
+    private void Reset_Label(){
+        fenetre.getNomText().setText("");
+        fenetre.getDateText().setText("");
+        fenetre.getElectriqueText().setText("");
+        fenetre.getPlaceText().setText("");
+        fenetre.getHeureFinText().setText("");
+        fenetre.getHeureDebutText().setText("");
     }
 
 }

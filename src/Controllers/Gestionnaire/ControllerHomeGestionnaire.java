@@ -1,15 +1,19 @@
 package Controllers.Gestionnaire;
 
+import Controllers.ControllerLogin;
 import Controllers.Visiteur.ControllerListeReservations;
 import Controllers.Visiteur.ControllerNewReservation;
 import DAO.DAOParking;
 import DAO.DAOPersonne;
 import DAO.DAOReservation;
+import DAO.DAORole;
 import Entity.Personne;
 import Entity.Role;
 import Utils.Singleton;
+import views.FenetreLogin;
 import views.Gestionnaire.FenetreHomeGestionnaire;
 import views.Gestionnaire.FenetreListeReservationGestionnaire;
+import views.Gestionnaire.FenetreUneReservation;
 import views.Visiteur.FenetreReservation;
 import views.Visiteur.FenetreReservations;
 
@@ -52,8 +56,10 @@ public class ControllerHomeGestionnaire {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new ControllerListeReservationGestionnaire(new FenetreListeReservationGestionnaire(), new DAOReservation(Singleton.getInstance().cnx), personne, role).init();
+                    new ControllerUneReservation(new FenetreUneReservation(), new DAOParking(Singleton.getInstance().cnx), new DAOReservation(Singleton.getInstance().cnx), new DAOPersonne(Singleton.getInstance().cnx), personne, role).init();
                 } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ParseException ex) {
                     throw new RuntimeException(ex);
                 }
                 fenetre.setVisible(false);
@@ -83,6 +89,22 @@ public class ControllerHomeGestionnaire {
                 fenetre.setVisible(false);
             }
         });
+
+
+        fenetre.getBoutonQuitter().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    FenetreLogin myFrame = new FenetreLogin();
+                    new ControllerLogin(myFrame,  new DAOPersonne(Singleton.getInstance().cnx), new DAORole(Singleton.getInstance().cnx)).init();
+                    fenetre.setVisible(false);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            }
+        });
+
     }
 
 }

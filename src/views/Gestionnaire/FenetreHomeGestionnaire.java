@@ -3,16 +3,18 @@ package views.Gestionnaire;
 import javax.swing.*;
 
 public class FenetreHomeGestionnaire extends JFrame{
-    private JPanel PanelMain;
+    private JPanel PanelHome;
     private JButton BoutonPropreReservation;
     private JButton BoutonListePropreReservation;
     private JButton BoutonReservation;
     private JButton BoutonListeReservation;
     private JLabel TextPanel;
+    private JButton BoutonQuitter;
+    private JButton Quitterbtn;
 
 
     public FenetreHomeGestionnaire() {
-        setContentPane(PanelMain);
+        setContentPane(PanelHome);
         setTitle("PageLogin");
         pack();
         setExtendedState(MAXIMIZED_BOTH);
@@ -59,5 +61,14 @@ public class FenetreHomeGestionnaire extends JFrame{
 
     public void setBoutonListeReservation(JButton boutonListeReservation) {
         BoutonListeReservation = boutonListeReservation;
+    }
+
+    public JButton getBoutonQuitter() {
+        return BoutonQuitter;
+    }
+
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }

@@ -37,4 +37,18 @@ public class DAORole {
         }
         return role;
     }
+
+    public Integer FindIdbyName(String Name) throws SQLException {
+        String sql = "SELECT IdRole FROM Role r WHERE r.Libelle = ?";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setString(1, Name);
+        ResultSet rs = ps.executeQuery();
+        Integer Ide;
+        if(rs.next()) {
+            Ide = rs.getInt("IdRole");
+        }else{
+            Ide = null;
+        }
+        return Ide;
+    }
 }

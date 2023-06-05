@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="Parking:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Parking_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Parking.jar">
+        <element id="module-output" name="Parking" />
+      </element>
+      <element id="library" level="project" name="mariadb-java-client-3.1.0" />
+      <element id="library" level="project" name="jcalendar-1.4" />
+      <element id="library" level="project" name="lib" />
+    </root>
+  </artifact>
+</component>

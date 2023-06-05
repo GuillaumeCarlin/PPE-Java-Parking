@@ -1,11 +1,15 @@
 package Controllers;
+import Controllers.Admin.ControllerHomeAdmin;
 import Controllers.Gestionnaire.ControllerHomeGestionnaire;
 import Controllers.Visiteur.ControllerHomeVisiteur;
 import DAO.DAOPersonne;
 import DAO.DAORole;
+import Entity.Log;
 import Entity.Personne;
 import Entity.Role;
+import Utils.Outils;
 import Utils.Singleton;
+import views.Admin.FenetreHomeAdmin;
 import views.Visiteur.FenetreHomeVisiteur;
 import views.Gestionnaire.FenetreHomeGestionnaire;
 import views.FenetreLogin;
@@ -17,9 +21,9 @@ import java.sql.SQLException;
 import java.util.Base64;
 
 public class ControllerLogin {
-    FenetreLogin fenetre;
-    DAOPersonne daop;
-    DAORole daor;
+    private FenetreLogin fenetre;
+    private DAOPersonne daop;
+    private DAORole daor;
 
     public ControllerLogin(FenetreLogin fenetre, DAOPersonne daop, DAORole daor){
         super();
@@ -31,7 +35,7 @@ public class ControllerLogin {
     public void init() {
         fenetre.setVisible(true);
         try {
-            fenetre.getLoginField().setText("gestionnaire@gestionnaire.fr");
+            fenetre.getLoginField().setText("admin.admin@admin.fr");
             fenetre.getMdpField().setText("123+aze");
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -44,6 +48,8 @@ public class ControllerLogin {
                     try {
                         Personne personne = daop.findByEmail(fenetre.getLoginField().getText());
                         Role Role = daor.findRoleById(personne.getIdRole());
+                        Outils Log = new Outils();
+                        Log.New_Log_Connexion(personne.getIdPersonne());
                         if(Role.getLibelle().equals("Gestionnaire")){
                             System.out.println("Gestionnaire");
                             new ControllerHomeGestionnaire(new FenetreHomeGestionnaire(), new DAOPersonne(Singleton.getInstance().cnx), personne, Role).init();
@@ -52,10 +58,10 @@ public class ControllerLogin {
                             System.out.println("Visiteur");
                             new ControllerHomeVisiteur(new FenetreHomeVisiteur(),daop ,personne, Role).init();
                         }
-                        else if(Role.getLibelle().equals("Admin")){
+                        else if(Role.getLibelle().equals("Admin")) {
                             System.out.println("Admin");
+                            new ControllerHomeAdmin(new FenetreHomeAdmin(), personne, Role).init();
                         }
-                        /*new ControllerHomeVisiteur(new FenetreHomeVisiteur(), daop, personne, Role).init();*/
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }

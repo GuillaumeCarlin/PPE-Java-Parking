@@ -3,6 +3,7 @@ package Entity;
 import java.sql.Time;
 
 public class Reservation {
+    private Integer IdReservation;
     private String IdPlace;
     private Integer IdPersonne;
     private Time HeureDebut;
@@ -79,5 +80,13 @@ public class Reservation {
 
     public void setNom(String nom) {
         Nom = nom;
+    }
+
+    public Integer getIdReservation() {
+        return IdReservation;
+    }
+
+    public void setIdReservation(Integer idReservation) {
+        IdReservation = idReservation;
     }
 }

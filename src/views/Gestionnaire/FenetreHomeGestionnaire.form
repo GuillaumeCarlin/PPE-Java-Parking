@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="views.Gestionnaire.FenetreHomeGestionnaire">
-  <grid id="27dc6" binding="PanelMain" layout-manager="BorderLayout" hgap="0" vgap="0">
+  <grid id="27dc6" binding="PanelHome" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="66" y="32" width="735" height="480"/>
     </constraints>
@@ -35,10 +35,6 @@
         <rowspec value="center:max(d;4px):noGrow"/>
         <rowspec value="top:4dlu:noGrow"/>
         <rowspec value="center:d:grow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:d:grow"/>
-        <colspec value="fill:d:grow"/>
-        <colspec value="left:4dlu:noGrow"/>
         <colspec value="fill:d:grow"/>
         <colspec value="left:4dlu:noGrow"/>
         <colspec value="fill:d:grow"/>
@@ -70,7 +66,7 @@
         <children>
           <component id="2d66c" class="javax.swing.JLabel" binding="TextPanel">
             <constraints>
-              <grid row="2" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="10" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
               <forms defaultalign-vert="false"/>
             </constraints>
             <properties>
@@ -89,37 +85,31 @@
           </vspacer>
           <vspacer id="5c57e">
             <constraints>
-              <grid row="14" column="12" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="12" column="12" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
               <forms defaultalign-vert="false"/>
             </constraints>
           </vspacer>
           <hspacer id="bab7d">
             <constraints>
-              <grid row="2" column="24" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms defaultalign-horz="false"/>
-            </constraints>
-          </hspacer>
-          <hspacer id="b07cd">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="22" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms defaultalign-horz="false"/>
             </constraints>
           </hspacer>
           <hspacer id="d2daf">
             <constraints>
-              <grid row="8" column="22" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="20" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms defaultalign-horz="false"/>
             </constraints>
           </hspacer>
           <hspacer id="dcde">
             <constraints>
-              <grid row="8" column="20" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="18" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms defaultalign-horz="false"/>
             </constraints>
           </hspacer>
           <hspacer id="308fe">
             <constraints>
-              <grid row="8" column="18" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="16" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms defaultalign-horz="false"/>
             </constraints>
           </hspacer>
@@ -141,12 +131,6 @@
               <forms defaultalign-horz="false"/>
             </constraints>
           </hspacer>
-          <hspacer id="f049b">
-            <constraints>
-              <grid row="8" column="14" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms defaultalign-horz="false"/>
-            </constraints>
-          </hspacer>
           <hspacer id="199d6">
             <constraints>
               <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -159,9 +143,27 @@
               <forms defaultalign-horz="false"/>
             </constraints>
           </hspacer>
+          <hspacer id="58789">
+            <constraints>
+              <grid row="8" column="14" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false"/>
+            </constraints>
+          </hspacer>
+          <vspacer id="4e9e8">
+            <constraints>
+              <grid row="4" column="12" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-vert="false"/>
+            </constraints>
+          </vspacer>
+          <hspacer id="f049b">
+            <constraints>
+              <grid row="8" column="22" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false"/>
+            </constraints>
+          </hspacer>
           <component id="fc91f" class="javax.swing.JButton" binding="BoutonReservation">
             <constraints>
-              <grid row="8" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms/>
             </constraints>
             <properties>
@@ -171,33 +173,15 @@
               <text value="Faire une réservation"/>
             </properties>
           </component>
-          <component id="b4ea0" class="javax.swing.JButton" binding="BoutonListeReservation">
+          <hspacer id="b07cd">
             <constraints>
-              <grid row="12" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms/>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false"/>
             </constraints>
-            <properties>
-              <background color="-1"/>
-              <font size="16"/>
-              <foreground color="-12517370"/>
-              <text value="Liste des réservations"/>
-            </properties>
-          </component>
-          <component id="85ccf" class="javax.swing.JButton" binding="BoutonListePropreReservation">
-            <constraints>
-              <grid row="10" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms/>
-            </constraints>
-            <properties>
-              <background color="-1"/>
-              <font size="16"/>
-              <foreground color="-12517370"/>
-              <text value="Liste de mes réservations"/>
-            </properties>
-          </component>
+          </hspacer>
           <component id="c5c05" class="javax.swing.JButton" binding="BoutonPropreReservation">
             <constraints>
-              <grid row="6" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms/>
             </constraints>
             <properties>
@@ -208,18 +192,42 @@
               <text value="Faire sa réservation"/>
             </properties>
           </component>
-          <hspacer id="58789">
+          <component id="85ccf" class="javax.swing.JButton" binding="BoutonListePropreReservation">
             <constraints>
-              <grid row="8" column="16" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms defaultalign-horz="false"/>
+              <grid row="6" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
             </constraints>
-          </hspacer>
-          <vspacer id="4e9e8">
+            <properties>
+              <background color="-1"/>
+              <font size="16"/>
+              <foreground color="-12517370"/>
+              <text value="Liste de mes réservations"/>
+            </properties>
+          </component>
+          <component id="b4ea0" class="javax.swing.JButton" binding="BoutonListeReservation">
             <constraints>
-              <grid row="4" column="12" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-              <forms defaultalign-vert="false"/>
+              <grid row="8" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
             </constraints>
-          </vspacer>
+            <properties>
+              <background color="-1"/>
+              <font size="16"/>
+              <foreground color="-12517370"/>
+              <text value="Liste des réservations"/>
+            </properties>
+          </component>
+          <component id="8df2b" class="javax.swing.JButton" binding="BoutonQuitter">
+            <constraints>
+              <grid row="10" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <background color="-263937"/>
+              <font size="16"/>
+              <foreground color="-12517370"/>
+              <text value="Déconnexion"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>

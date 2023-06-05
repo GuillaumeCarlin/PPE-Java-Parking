@@ -1,10 +1,13 @@
 package Controllers.Visiteur;
 
+import Controllers.ControllerLogin;
 import DAO.DAOParking;
 import DAO.DAOPersonne;
 import DAO.DAOReservation;
+import DAO.DAORole;
 import Entity.Personne;
 import Entity.Role;
+import views.FenetreLogin;
 import views.Visiteur.FenetreHomeVisiteur;
 import views.Visiteur.FenetreReservation;
 import views.Visiteur.FenetreReservations;
@@ -55,6 +58,22 @@ public class ControllerHomeVisiteur {
                     } catch (ParseException ex) {
                         throw new RuntimeException(ex);
                     }
+                    fenetre.setVisible(false);
+                }
+            });
+
+            fenetre.getQuitterBtn().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    DAORole daor = null;
+                    try {
+                        daor = new DAORole(Singleton.getInstance().cnx);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    FenetreLogin myFrame = new FenetreLogin();
+                    new ControllerLogin(myFrame, daop, daor).init();
                     fenetre.setVisible(false);
                 }
             });

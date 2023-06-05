@@ -13,10 +13,15 @@ public class Main {
         new ControllerLogin(myFrame, daop, daor).init();
     }
 
-    //TODO: Faire la fonction de vérification qui empêche de réserver une place à un horraire déjà réserver
     //TODO: Faire la fonction FindByDate du DAOReservation pour pouvoir faire une recherche en fonction de la date
     //TODO: Faire la génération de QRCode
+    //TODO: Mettre une vérifiaction pourqu'une personne ne puisse pas réserver deux place en même temps
 
+
+    //Ajout de fonctionnalité Idée
+    //TODO: Rajouter un champs pour changer son mot de passe
+    //TODO: Faire un bouton pour générer un mot de passe
+    //TODO: Faire une pop-up à la connexion quand le mot de passe n'est pas bon
 
 
 

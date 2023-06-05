@@ -9,6 +9,7 @@ public class Personne {
     private String Mdp;
     private String Email;
     private Integer IdRole;
+    private String RoleName;
 
     public Personne(){
         super();
@@ -88,5 +89,13 @@ public class Personne {
 
     public void setIdRole(Integer idRole) {
         IdRole = idRole;
+    }
+
+    public String getRoleName() {
+        return RoleName;
+    }
+
+    public void setRoleName(String roleName) {
+        RoleName = roleName;
     }
 }

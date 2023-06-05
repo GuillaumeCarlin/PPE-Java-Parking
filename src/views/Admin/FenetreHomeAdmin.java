@@ -3,16 +3,17 @@ package views.Admin;
 import javax.swing.*;
 
 public class FenetreHomeAdmin extends JFrame{
-    private JPanel PanelMain;
-    private JButton BoutonPropreReservation;
-    private JButton BoutonListePropreReservation;
-    private JButton BoutonReservation;
+    private JPanel PanelHome;
+    private JButton BoutonUneReservation;
     private JButton BoutonListeReservation;
     private JLabel TextPanel;
+    private JButton listeDesUtilisateursButton;
+    private JButton logButton;
+    private JButton QuitterBtn;
 
 
     public FenetreHomeAdmin() {
-        setContentPane(PanelMain);
+        setContentPane(PanelHome);
         setTitle("PageLogin");
         pack();
         setExtendedState(MAXIMIZED_BOTH);
@@ -25,39 +26,26 @@ public class FenetreHomeAdmin extends JFrame{
         return TextPanel;
     }
 
-    public void setTextPanel(JLabel textPanel) {
-        TextPanel = textPanel;
+
+
+    public JButton getListeDesUtilisateursButton() {
+        return listeDesUtilisateursButton;
     }
 
-    public JButton getBoutonPropreReservation() {
-        return BoutonPropreReservation;
+
+    public JButton getQuitterBtn() {
+        return QuitterBtn;
     }
 
-    public void setBoutonPropreReservation(JButton boutonPropreReservation) {
-        BoutonPropreReservation = boutonPropreReservation;
-    }
-
-    public JButton getBoutonListePropreReservation() {
-        return BoutonListePropreReservation;
-    }
-
-    public void setBoutonListePropreReservation(JButton boutonListePropreReservation) {
-        BoutonListePropreReservation = boutonListePropreReservation;
-    }
-
-    public JButton getBoutonReservation() {
-        return BoutonReservation;
-    }
-
-    public void setBoutonReservation(JButton boutonReservation) {
-        BoutonReservation = boutonReservation;
+    public JButton getBoutonUneReservation() {
+        return BoutonUneReservation;
     }
 
     public JButton getBoutonListeReservation() {
         return BoutonListeReservation;
     }
 
-    public void setBoutonListeReservation(JButton boutonListeReservation) {
-        BoutonListeReservation = boutonListeReservation;
+    public JButton getLogButton() {
+        return logButton;
     }
 }

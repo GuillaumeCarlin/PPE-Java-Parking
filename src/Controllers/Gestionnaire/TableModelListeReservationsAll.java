@@ -93,7 +93,6 @@ public class TableModelListeReservationsAll extends DefaultTableModel {
                 break;
         }
         modified.add(reservation);
-        System.out.println(reservation);
     }
 */
     @Override
